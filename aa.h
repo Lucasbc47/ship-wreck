@@ -6,10 +6,8 @@
 
 class PlayerObj {
 public:
-    Texture2D texture;
     PlayerObj(int x, int y, int speed);
-    ImgRender();
-
+    ~PlayerObj(); // Declare the destructor
     void Draw();
     void Movement();
 
@@ -17,6 +15,7 @@ private:
     int x;
     int y;
     int speed;
+    Texture2D playerTexture; 
 };
 
 #endif
