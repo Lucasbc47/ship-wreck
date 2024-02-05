@@ -1,14 +1,16 @@
 // aa.cpp
 #include "aa.h"
 
-PlayerObj::PlayerObj(int x, int y, int speed) : x(x), y(y), speed(speed) {}
-PlayerObj::ImgRender(){
-    Image image;
-    texture = LoadTextureFromImage(image);
+PlayerObj::PlayerObj(int x, int y, int speed) : x(x), y(y), speed(speed) {
+    playerTexture = LoadTexture("img/spaceship.png");
+}
+
+PlayerObj::~PlayerObj() {
+    UnloadTexture(playerTexture);
 }
 
 void PlayerObj::Draw() {
-    DrawRectangle(x, y, 50, 50, DARKBLUE);
+    DrawTexture(playerTexture, x, y, WHITE);
 }
 
 void PlayerObj::Movement() {
