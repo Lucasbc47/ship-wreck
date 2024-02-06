@@ -1,22 +1,24 @@
 // main.cpp
 #include "raylib.h"
-#include "aa.h"
+#include "spaceship.hpp"
 
-int main(void) {
-    const int screenHeight = 800;
-    const int screenWidth = 600;
+#define HEIGHT 800
+#define WIDTH 600
+#define TITLE "Ship Wreck"
 
-    InitWindow(screenHeight, screenWidth, "Teste");
+int main(void)
+{
+    InitWindow(HEIGHT, WIDTH, TITLE);
     SetTargetFPS(60);
 
-    PlayerObj playerObj(400, 400, 2, 0);
-    
+    Ship ship(400, 400, 2, 0);
 
-    while (!WindowShouldClose()) {
+    while (!WindowShouldClose())
+    {
         BeginDrawing();
 
-        playerObj.Movement();
-        playerObj.Draw();
+        ship.Movement();
+        ship.Draw();
 
         ClearBackground(RAYWHITE);
 
@@ -26,5 +28,3 @@ int main(void) {
     CloseWindow();
     return 0;
 }
-
-
