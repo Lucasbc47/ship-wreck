@@ -4,12 +4,12 @@
 
 int main(void) {
     const int screenHeight = 800;
-    const int screenWidth = 450;
+    const int screenWidth = 600;
 
     InitWindow(screenHeight, screenWidth, "Teste");
     SetTargetFPS(60);
 
-    PlayerObj playerObj(400, 400, 2);
+    PlayerObj playerObj(400, 400, 2, 0);
     
 
     while (!WindowShouldClose()) {
@@ -19,7 +19,6 @@ int main(void) {
         playerObj.Draw();
 
         ClearBackground(RAYWHITE);
-        DrawText("Eh o Babaz", 400, 225, 20, GRAY);
 
         EndDrawing();
     }
@@ -27,3 +26,5 @@ int main(void) {
     CloseWindow();
     return 0;
 }
+
+
