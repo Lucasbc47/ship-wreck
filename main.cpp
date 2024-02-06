@@ -6,8 +6,7 @@
 #define HEIGHT 800
 #define WIDTH 600
 #define TITLE "Ship Wreck"
-
-Texture     
+     
 
 int main(void)
 {
