@@ -17,7 +17,7 @@ void PlayerObj::Draw()
 {
     // Create source and destination rectangles
     Rectangle sourceRec = { 0.0f, 0.0f, static_cast<float>(playerTexture.width), static_cast<float>(playerTexture.height) };
-    Rectangle destRec = { static_cast<float>(x), static_cast<float>(y), GetScreenWidth()*0.1f, GetScreenWidth()*0.1f };
+    Rectangle destRec = { static_cast<float>(x), static_cast<float>(y), GetScreenWidth()*0.07f, GetScreenWidth()*0.1f };
 
     // Draw the resized texture
     DrawTexturePro(playerTexture, sourceRec, destRec, Vector2{ GetScreenWidth()*0.05f, GetScreenWidth()*0.05f }, objRotation, WHITE);
@@ -30,11 +30,11 @@ void PlayerObj::Movement()
     if (IsKeyDown(KEY_A))
     {
         x = x - speed;
-        objRotation = std::max(objRotation - rotationSpeed, -15.0f);
+        objRotation = std::max(objRotation - rotationSpeed, -10.0f);
     } else if (IsKeyDown(KEY_D))
     {
         x = x + speed;
-        objRotation = std::min(objRotation + rotationSpeed, 15.0f);
+        objRotation = std::min(objRotation + rotationSpeed, 10.0f);
     } else {
         // Se nenhuma tecla de rotação está pressionada, suavize a rotação de volta para 0
         if (objRotation > 0.0f)
