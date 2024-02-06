@@ -25,7 +25,6 @@ void Ship::Movement()
     const float rotationSpeed = 2.5f;
     const float maxRotation = 15.0f;
 
-    // Movimentação horizontal
     if (IsKeyDown(KEY_A))
     {
         MoveLeft();
@@ -37,11 +36,9 @@ void Ship::Movement()
         objRotation = std::min(objRotation + rotationSpeed, 10.0f);    }
     else
     {
-        // Suavize a rotação de volta para 0 quando não há entrada de rotação
         SmoothRotationToZero(rotationSpeed);
     }
 
-    // Movimentação vertical
     if (IsKeyDown(KEY_W))
     {
         MoveUp();
