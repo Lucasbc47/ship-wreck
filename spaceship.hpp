@@ -10,6 +10,8 @@ public:
     ~Ship();
     void Draw();
     void Movement();
+    Vector2 GetPosition();
+    Vector2 GetPositionXY();
 
 private:
     void MoveLeft();
