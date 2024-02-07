@@ -80,3 +80,8 @@ void Ship::SmoothRotationToZero(float rotationSpeed)
         objRotation = std::min(objRotation + rotationSpeed, 0.0f);
     }
 }
+
+Vector2 Ship::GetPositionXY()
+{
+    return { x, y };
+}
