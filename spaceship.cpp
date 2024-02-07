@@ -47,6 +47,8 @@ void Ship::Movement()
     {
         MoveDown();
     }
+
+    KeepInside();
 }
 
 Vector2 Ship::GetPosition()
@@ -72,6 +74,12 @@ void Ship::MoveUp()
 void Ship::MoveDown()
 {
     y += speed;
+}
+
+void Ship::KeepInside()
+{
+    x = std::clamp(x, 0, 800 - static_cast<int>(GetScreenWidth() * 0.07f));
+    y = std::clamp(y, 0, 600 - static_cast<int>(GetScreenWidth() * 0.1f));
 }
 
 void Ship::SmoothRotationToZero(float rotationSpeed)

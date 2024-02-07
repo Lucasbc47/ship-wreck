@@ -1,9 +1,7 @@
 // asteroids.cpp
-
 #include "asteroids.hpp"
 
 Asteroid asteroids[MAX_ASTEROIDS];
-
 void InitAsteroids()
 {
     for (int i = 0; i < MAX_ASTEROIDS; i++)
@@ -12,6 +10,7 @@ void InitAsteroids()
         asteroids[i].position.y = GetRandomValue(0, GetScreenHeight());
         asteroids[i].speed.x = GetRandomValue(-2, 2);
         asteroids[i].speed.y = GetRandomValue(-2, 2);
+        asteroids[i].texture = LoadTexture("img/asteroid.png");
     }
 }
 
@@ -46,7 +45,7 @@ void DrawAsteroids()
 {
     for (int i = 0; i < MAX_ASTEROIDS; i++)
     {
-        DrawCircle(static_cast<int>(asteroids[i].position.x), static_cast<int>(asteroids[i].position.y), ASTEROID_RADIUS, GRAY);
+        DrawTextureV(asteroids[i].texture, asteroids[i].position, WHITE); // Draw the texture
     }
 }
 

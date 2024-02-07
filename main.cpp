@@ -6,8 +6,8 @@
 
 #include <iostream>
 
-#define HEIGHT 800
-#define WIDTH 600
+#define HEIGHT 600
+#define WIDTH 800
 #define TITLE "Ship Wreck"
 
 void startGame();
@@ -23,23 +23,34 @@ void startGame()
     bool gameOver = false;
     bool gameStarted = false;
 
-    InitWindow(HEIGHT, WIDTH, TITLE);
+    InitWindow(WIDTH, HEIGHT, TITLE);
     InitAudioDevice();
     SetTargetFPS(60);
 
-    // Musica
-    /* Music music = LoadMusicStream("output/tema.ogg");
-    PlayMusicStream(music); */
+    Image backgroundImage = LoadImage("img/background.png");
+    ImageResize(&backgroundImage, WIDTH, HEIGHT);
+    Texture2D background = LoadTextureFromImage(backgroundImage);
+    UnloadImage(backgroundImage);
 
-    Hp hp(3);
+    float backgroundPosY = 0;
+    float backgroundSpeed = 3.0f;
+
+    Hp hp(20);
     Ship ship(400, 400, 2, 0);
     InitAsteroids();
 
     while (!WindowShouldClose())
     {
-        /*  UpdateMusicStream(music);/ */
         BeginDrawing();
         ClearBackground(RAYWHITE);
+
+        backgroundPosY += backgroundSpeed;
+
+        if (backgroundPosY >= HEIGHT)
+            backgroundPosY = 0;
+
+        DrawTextureEx(background, {0, backgroundPosY}, 0.0f, 1.0f, WHITE);
+        DrawTextureEx(background, {0, backgroundPosY - HEIGHT}, 0.0f, 1.0f, WHITE);
 
         if (gameStarted && !gameOver)
         {
@@ -86,5 +97,7 @@ void startGame()
         EndDrawing();
     }
 
+    UnloadTexture(background);
+    // CloseAudioDevice();
     CloseWindow();
 }

@@ -11,6 +11,7 @@ struct Asteroid
     Vector2 position;
     Vector2 speed;
     Color color;
+    Texture2D texture;
 };
 
 extern Asteroid asteroids[MAX_ASTEROIDS];

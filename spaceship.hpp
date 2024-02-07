@@ -12,12 +12,13 @@ public:
     void Movement();
     void Reset();
     Vector2 GetPosition();
-    
+
 private:
     void MoveLeft();
     void MoveRight();
     void MoveUp();
     void MoveDown();
+    void KeepInside();
     void SmoothRotationToZero(float rotationSpeed);
 
     int x;
@@ -26,5 +27,3 @@ private:
     float objRotation;
     Texture2D shipTexture;
 };
-
-
