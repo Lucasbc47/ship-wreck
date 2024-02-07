@@ -51,22 +51,22 @@ void Ship::Movement()
 
 void Ship::MoveLeft()
 {
-    x -= speed;
+    if(x > 0){x -= speed;}
 }
 
 void Ship::MoveRight()
 {
-    x += speed;
+    if(x < GetScreenWidth()){x += speed;}
 }
 
 void Ship::MoveUp()
 {
-    y -= speed;
+    if(y > 0){y -= speed;}
 }
 
 void Ship::MoveDown()
 {
-    y += speed;
+    if(x < GetScreenHeight()){y += speed;}
 }
 
 void Ship::SmoothRotationToZero(float rotationSpeed)
