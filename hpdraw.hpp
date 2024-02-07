@@ -2,14 +2,14 @@
 
 #include "raylib.h"
 
-class Hp{
-    public:
+class Hp
+{
+public:
     Hp(int hp);
     ~Hp();
     void Draw();
 
-    private:
+private:
     int hp;
     Texture2D hpUnitTexture;
-
 };

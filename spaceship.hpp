@@ -10,9 +10,9 @@ public:
     ~Ship();
     void Draw();
     void Movement();
+    void Reset();
     Vector2 GetPosition();
-    Vector2 GetPositionXY();
-
+    
 private:
     void MoveLeft();
     void MoveRight();
@@ -26,3 +26,5 @@ private:
     float objRotation;
     Texture2D shipTexture;
 };
+
+

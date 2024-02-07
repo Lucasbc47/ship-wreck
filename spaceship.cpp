@@ -16,14 +16,13 @@ Ship::~Ship()
 void Ship::Draw()
 {
     Rectangle sourceRec = {0.0f, 0.0f, static_cast<float>(shipTexture.width), static_cast<float>(shipTexture.height)};
-    Rectangle destRec = { static_cast<float>(x), static_cast<float>(y), GetScreenWidth()*0.07f, GetScreenWidth()*0.1f };
+    Rectangle destRec = {static_cast<float>(x), static_cast<float>(y), GetScreenWidth() * 0.07f, GetScreenWidth() * 0.1f};
     DrawTexturePro(shipTexture, sourceRec, destRec, Vector2{GetScreenWidth() * 0.05f, GetScreenWidth() * 0.05f}, objRotation, WHITE);
 }
 
 void Ship::Movement()
 {
     const float rotationSpeed = 2.5f;
-    const float maxRotation = 15.0f;
 
     if (IsKeyDown(KEY_A))
     {
@@ -33,7 +32,8 @@ void Ship::Movement()
     else if (IsKeyDown(KEY_D))
     {
         MoveRight();
-        objRotation = std::min(objRotation + rotationSpeed, 10.0f);    }
+        objRotation = std::min(objRotation + rotationSpeed, 10.0f);
+    }
     else
     {
         SmoothRotationToZero(rotationSpeed);
@@ -49,24 +49,29 @@ void Ship::Movement()
     }
 }
 
+Vector2 Ship::GetPosition()
+{
+    return {static_cast<float>(x), static_cast<float>(y)};
+}
+
 void Ship::MoveLeft()
 {
-    if(x > 0){x -= speed;}
+    x -= speed;
 }
 
 void Ship::MoveRight()
 {
-    if(x < GetScreenWidth()){x += speed;}
+    x += speed;
 }
 
 void Ship::MoveUp()
 {
-    if(y > 0){y -= speed;}
+    y -= speed;
 }
 
 void Ship::MoveDown()
 {
-    if(x < GetScreenHeight()){y += speed;}
+    y += speed;
 }
 
 void Ship::SmoothRotationToZero(float rotationSpeed)
@@ -81,7 +86,10 @@ void Ship::SmoothRotationToZero(float rotationSpeed)
     }
 }
 
-Vector2 Ship::GetPositionXY()
+void Ship::Reset()
 {
-    return { x, y };
+    x = GetScreenWidth() / 2;
+    y = GetScreenHeight() / 2;
+
+    objRotation = 0.0f;
 }
