@@ -5,6 +5,7 @@
 #include "hpdraw.hpp"
 
 #include <iostream>
+#include <string>
 #include <vector>
 
 #define HEIGHT 600
@@ -42,6 +43,7 @@ void startGame()
 
     float elapsedTime = 0;
     bool canShoot = true;
+    int score = 0;
 
     Hp hp(10);
     Ship ship(400, 400, 2, 0);
@@ -68,6 +70,7 @@ void startGame()
 
             float frameTime = GetFrameTime();
             elapsedTime += frameTime;
+            DrawText(("Score: " + std::to_string(score)).c_str(), 10, 37, 20, LIGHTGRAY);
 
             if (IsKeyDown(KEY_SPACE) && canShoot)
             {
@@ -87,7 +90,8 @@ void startGame()
             }
 
             if (elapsedTime >= 0.1)
-            {
+            {  
+                score++;
                 canShoot = true;
                 elapsedTime = 0;
             }
