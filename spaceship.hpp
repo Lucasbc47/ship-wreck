@@ -2,6 +2,7 @@
 #pragma once
 
 #include "raylib.h"
+#define PLAYER_MAX_SHOOTS 3
 
 class Ship
 {
@@ -26,4 +27,12 @@ private:
     int speed;
     float objRotation;
     Texture2D shipTexture;
+};
+
+class Shoot
+{
+public:
+    Vector2 position;
+    bool active;
+    void update();
 };
