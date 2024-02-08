@@ -101,3 +101,15 @@ void Ship::Reset()
 
     objRotation = 0.0f;
 }
+
+void Shoot::update()
+{
+    if (active)
+    {
+        position.y -= 10;
+        if (position.y < 0)
+        {
+            active = false;
+        }
+    }
+}

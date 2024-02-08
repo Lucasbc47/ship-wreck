@@ -5,6 +5,7 @@
 #include "hpdraw.hpp"
 
 #include <iostream>
+#include <vector>
 
 #define HEIGHT 600
 #define WIDTH 800
@@ -27,7 +28,11 @@ void startGame()
     InitAudioDevice();
     SetTargetFPS(60);
 
-    Image backgroundImage = LoadImage("img/background.png");
+    Image bulletImage = LoadImage("./img/bullet.png");
+    Texture2D bulletTexture = LoadTextureFromImage(bulletImage);
+    UnloadImage(bulletImage);
+
+    Image backgroundImage = LoadImage("./img/background.png");
     ImageResize(&backgroundImage, WIDTH, HEIGHT);
     Texture2D background = LoadTextureFromImage(backgroundImage);
     UnloadImage(backgroundImage);
@@ -35,8 +40,12 @@ void startGame()
     float backgroundPosY = 0;
     float backgroundSpeed = 3.0f;
 
-    Hp hp(20);
+    float elapsedTime = 0;
+    bool canShoot = true;
+
+    Hp hp(10);
     Ship ship(400, 400, 2, 0);
+    std::vector<Shoot> bullets(100);
     InitAsteroids();
 
     while (!WindowShouldClose())
@@ -57,9 +66,40 @@ void startGame()
             UpdateAsteroids();
             DrawAsteroids();
 
-            hp.Draw();
-            ship.Movement();
-            ship.Draw();
+            float frameTime = GetFrameTime();
+            elapsedTime += frameTime;
+
+            if (IsKeyDown(KEY_SPACE) && canShoot)
+            {
+                canShoot = false;
+                for (auto &bullet : bullets)
+                {
+                    if (!bullet.active)
+                    {
+                        bullet.active = true;
+                        Vector2 correctPos = ship.GetPosition();
+                        correctPos.x -= 18;
+                        correctPos.y -= 60;
+                        bullet.position = correctPos;
+                        break;
+                    }
+                }
+            }
+
+            if (elapsedTime >= 0.1)
+            {
+                canShoot = true;
+                elapsedTime = 0;
+            }
+
+            for (auto &bullet : bullets)
+            {
+                bullet.update();
+                if (bullet.active)
+                {
+                    DrawTextureV(bulletTexture, bullet.position, WHITE);
+                }
+            }
 
             for (int i = 0; i < MAX_ASTEROIDS; i++)
             {
@@ -70,6 +110,9 @@ void startGame()
                     gameOver = true;
                 }
             }
+            hp.Draw();
+            ship.Movement();
+            ship.Draw();
         }
 
         if (gameOver)
