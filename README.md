@@ -8,5 +8,5 @@ https://www.raylib.com/
   - [ ] Ajustar tamanho do Sprite
 - [x] Colisão
 - [X] Sistema Menu
-- [ ] Sistema de tiro
+- [X] Sistema de tiro
 - [ ] Sons, Músicas
