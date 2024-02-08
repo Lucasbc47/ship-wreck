@@ -21,7 +21,7 @@ void Hp::Draw()
 {
     for (int i = 0; i < hp; ++i)
     {
-        DrawTexture(hpUnitTexture, 5 + i * 9, 5, WHITE);
+        DrawTexture(hpUnitTexture, 5 + i * 29, 5, WHITE);
     }
 }
 
