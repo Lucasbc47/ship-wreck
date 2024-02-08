@@ -5,8 +5,9 @@ https://gitlab.com/GameDevTV/CPPCourse/raylib-vscode-template/-/tree/main
 https://www.raylib.com/
 ```
 - [x] Asteroides
-  - [ ] Ajustar tamanho do Sprite
+  - [X] Ajustar tamanho do Sprite
 - [x] Colisão
 - [X] Sistema Menu
 - [X] Sistema de tiro
-- [ ] Sons, Músicas
+- [X] Sons, Músicas
+- [ ] Juntar Códigos
