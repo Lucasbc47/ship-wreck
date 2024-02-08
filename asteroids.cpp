@@ -10,7 +10,11 @@ void InitAsteroids()
         asteroids[i].position.y = GetRandomValue(0, GetScreenHeight());
         asteroids[i].speed.x = GetRandomValue(-2, 2);
         asteroids[i].speed.y = GetRandomValue(-2, 2);
-        asteroids[i].texture = LoadTexture("img/asteroid.png");
+        asteroids[i].texture = LoadTexture("./img/asteroid.png");
+        asteroids[i].hasCollided = false;
+        float asteroidSize = GetScreenWidth() * 0.10f;
+        asteroids[i].texture.width = static_cast<int>(asteroidSize);
+        asteroids[i].texture.height = static_cast<int>(asteroidSize);
     }
 }
 
@@ -21,7 +25,6 @@ void UpdateAsteroids()
         asteroids[i].position.x += asteroids[i].speed.x;
         asteroids[i].position.y += asteroids[i].speed.y;
 
-        // Wrap around screen
         if (asteroids[i].position.x > GetScreenWidth() + ASTEROID_RADIUS)
         {
             asteroids[i].position.x = -ASTEROID_RADIUS;
@@ -45,7 +48,7 @@ void DrawAsteroids()
 {
     for (int i = 0; i < MAX_ASTEROIDS; i++)
     {
-        DrawTextureV(asteroids[i].texture, asteroids[i].position, WHITE); // Draw the texture
+        DrawTextureV(asteroids[i].texture, asteroids[i].position, WHITE);
     }
 }
 

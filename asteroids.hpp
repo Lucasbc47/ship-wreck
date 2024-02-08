@@ -12,6 +12,7 @@ struct Asteroid
     Vector2 speed;
     Color color;
     Texture2D texture;
+    bool hasCollided;
 };
 
 extern Asteroid asteroids[MAX_ASTEROIDS];

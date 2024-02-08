@@ -102,6 +102,11 @@ void Ship::Reset()
     objRotation = 0.0f;
 }
 
+Texture2D Ship::GetTexture()
+{
+    return shipTexture;
+}
+
 void Shoot::update()
 {
     if (active)

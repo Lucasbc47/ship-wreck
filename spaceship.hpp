@@ -2,7 +2,6 @@
 #pragma once
 
 #include "raylib.h"
-#define PLAYER_MAX_SHOOTS 3
 
 class Ship
 {
@@ -13,6 +12,7 @@ public:
     void Movement();
     void Reset();
     Vector2 GetPosition();
+    Texture2D GetTexture();
 
 private:
     void MoveLeft();
