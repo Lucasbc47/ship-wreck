@@ -80,6 +80,7 @@ void startGame()
                     if (!bullet.active)
                     {
                         bullet.active = true;
+                        //implement lazersound
                         Vector2 correctPos = ship.GetPosition();
                         correctPos.x -= 18;
                         correctPos.y -= 60;
