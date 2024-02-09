@@ -14,5 +14,5 @@
 ### 👨‍💻 Desenvolvedores
 
 - [Lucas Costa](https://github.com/Lucasbc47)
-- [Skillterer](https://github.com/Skillterer)
+- [Samuel Azevedo](https://github.com/Skillterer)
 - [Vinicius Rampazi](https://github.com/icexsilent)
