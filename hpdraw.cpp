@@ -2,11 +2,14 @@
 #include "hpdraw.hpp"
 #include <iostream>
 
+// Construtor
 Hp::Hp(int hp) : hp(hp)
 {
     hpUnitTexture = LoadTexture("img/hpunit.png");
     initialHp = hp;
 }
+
+// Desconstrutor
 Hp::~Hp()
 {
     UnloadTexture(hpUnitTexture);
