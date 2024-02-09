@@ -15,10 +15,12 @@
 #define PONTOC 50
 
 void startGame();
+void mostrarDevs();
 bool CheckCollisionSprite(Texture2D sprite1, Vector2 pos1, Texture2D sprite2, Vector2 pos2);
 
 int main(void)
 {
+    mostrarDevs();
     startGame();
     return 0;
 }
@@ -39,9 +41,12 @@ void startGame()
 
     const float intervalo_piscar = 0.5f;
 
+    Image icon = LoadImage("./img/Shiprwreck64.ico");
+
     InitWindow(WIDTH, HEIGHT, TITLE);
     InitAudioDevice();
     SetTargetFPS(60);
+    SetWindowIcon(icon);
 
     // musicas
     Music musica_fundo = LoadMusicStream("./sound/tema.ogg");
@@ -235,4 +240,35 @@ bool CheckCollisionSprite(Texture2D sprite1, Vector2 pos1, Texture2D sprite2, Ve
 
     // Verificar intersecção de retângulos (colisão)
     return CheckCollisionRecs(rect1, rect2);
+}
+
+void mostrarDevs()
+{
+    InitWindow(800, 600, "Ship Wreck");
+
+    Image image = LoadImage("img/developedby.png");
+    Texture2D texture = LoadTextureFromImage(image);
+
+    UnloadImage(image);
+
+    SetTargetFPS(60);
+
+    while (!WindowShouldClose())
+    {
+        BeginDrawing();
+
+        ClearBackground(RAYWHITE);
+
+        DrawTexture(texture, 800 / 2 - texture.width / 2, 600 / 2 - texture.height / 2, WHITE);
+
+        EndDrawing();
+
+        if (IsKeyPressed(KEY_ENTER))
+        {
+            break;
+        }
+    }
+
+    UnloadTexture(texture);
+    CloseWindow();
 }
