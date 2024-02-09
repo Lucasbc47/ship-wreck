@@ -142,7 +142,6 @@ void startGame()
                 {
                     DrawTextureV(img_projetil_tex, capsula.position, WHITE);
 
-                    // Check collision with asteroids
                     for (int i = 0; i < MAX_ASTEROIDS; i++)
                     {
                         if (!asteroids[i].hasCollided && CheckCollisionSprite(img_projetil_tex, capsula.position, asteroids[i].texture, asteroids[i].position))
